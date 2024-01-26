@@ -1,4 +1,9 @@
-install:
+install: install-app env-prepare key
+
+run:
+	docker-compose up -d
+
+install-app:
 	composer install
 
 env-prepare:
@@ -7,7 +12,3 @@ env-prepare:
 key:
 	php artisan key:generate
 
-run:
-	docker-compose up -d
-
-all: install env-prepare key run
