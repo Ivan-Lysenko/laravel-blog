@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <p>Эксперементы с Laravel на Хекслете</p>
+    <p>Эксперименты с Laravel на Хекслете!!!</p>
 @endsection
