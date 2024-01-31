@@ -6,10 +6,25 @@
         <title>Hexlet Blog - @yield('title')</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="csrf-param" content="_token" />
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-        <script src="{{ asset('js/app.js') }}"></script>
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/bootstrap.js') }}"></script>
     </head>
     <body>
+    <nav class="navbar navbar-expand-sm bg-light">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('articles.index') }}">Список статей</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about') }}">О блоге</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link 3</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
         <div class="container mt-4">
             <h1>@yield('header')</h1>
             <div>
