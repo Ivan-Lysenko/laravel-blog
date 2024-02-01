@@ -34,7 +34,7 @@ class ArticleController extends Controller
     /**
      * @throws ValidationException
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         $data = $request->validated();
 
