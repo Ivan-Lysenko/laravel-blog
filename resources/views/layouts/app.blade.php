@@ -20,12 +20,18 @@
                     <a class="nav-link" href="{{ route('about') }}">О блоге</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link 3</a>
+                    <a class="nav-link" href="{{ route('articles.create') }}">Новая статья</a>
                 </li>
             </ul>
         </div>
     </nav>
         <div class="container mt-4">
+            @isset($flash)
+                <div>
+                    {{ $flash }}
+                </div>
+            @endisset
+
             <h1>@yield('header')</h1>
             <div>
                 @yield('content')
