@@ -19,9 +19,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">О блоге</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('articles.create') }}">Новая статья</a>
-                </li>
             </ul>
         </div>
     </nav>
