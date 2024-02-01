@@ -6,8 +6,8 @@
 
 @section('content')
 
-    {{ Form::model($article, ['route' =>'articles.store', 'method' => 'post']) }}
+    {{ Form::model($article, ['route' => ['articles.update', $article], 'method' => 'patch']) }}
         @include('article.form')
-        {{ Form::submit('Сохранить') }}
+        {{ Form::submit('Обновить') }}
     {{ Form::close() }}
 @endsection

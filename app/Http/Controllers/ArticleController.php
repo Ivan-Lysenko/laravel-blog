@@ -45,8 +45,35 @@ class ArticleController extends Controller
         $article->save();
 
         $request->session()->flash('status', 'Article was store successful!');
-        $request->session()->flash('statused', 'Article was store successful Yet!');
 
         return redirect()->route('articles.index');
+    }
+
+    public function edit($id)
+    {
+        $article = Article::findOrFail($id);
+
+        return view('article.edit', compact('article'));
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function update(Request $request, $id)
+    {
+        $article = Article::findOrFail($id);
+
+        $data = $this->validate($request, [
+            'name' => 'required|unique:articles,name' . $article->id,
+            'body' => 'required|min:1000',
+        ]);
+
+        $article->fill($data);
+        $article->save();
+
+        $request->session()->flash('status', 'Article was update successful!');
+
+        return redirect()
+            ->route('articles.index');
     }
 }
