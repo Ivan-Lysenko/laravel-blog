@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ArticleRequest;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -35,10 +36,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|unique:articles',
-            'body' => 'required|min:1000',
-        ]);
+        $data = $request->validated();
 
         $article = new Article();
         $article->fill($data);
@@ -59,14 +57,11 @@ class ArticleController extends Controller
     /**
      * @throws ValidationException
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
         $article = Article::findOrFail($id);
 
-        $data = $this->validate($request, [
-            'name' => 'required|unique:articles,name' . $article->id,
-            'body' => 'required|min:1000',
-        ]);
+        $data = $request->validated();
 
         $article->fill($data);
         $article->save();
