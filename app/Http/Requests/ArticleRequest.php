@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ArticleRequest extends FormRequest
 {
@@ -21,30 +22,12 @@ class ArticleRequest extends FormRequest
      */
     public function rules(): array
     {
-        $articleId = $this->route('id');
-        switch($this->method())
-        {
-            case 'GET':
-            case 'DELETE':
-            {
-                return [];
-            }
-            case 'POST':
-            {
-                return [
-                    'name' => 'required|unique:articles',
-                    'body' => 'required|min:1000',
-                ];
-            }
-            case 'PUT':
-            case 'PATCH':
-            {
-                return [
-                    'name' => 'required|unique:articles,name' . $articleId,
-                    'body' => 'required|min:1000',
-                ];
-            }
-            default:break;
-        }
+        return [
+            'name' => [
+                'required',
+                Rule::unique('articles', 'name')->ignore($this->id)
+            ],
+            'body' => 'required|min:1000',
+        ];
     }
 }
