@@ -15,8 +15,10 @@
         </div>
     @endif
     {{ Form::model($article, ['route' =>'articles.store', 'method' => 'post']) }}
-        {{ Form::text('name') }}
-        {{ Form::textarea('body') }}
+        {{ Form::label('name', 'Название статьи') }}
+        {{ Form::text('name') }}<br>
+        {{ Form::label('body', 'Текст статьи') }}
+        {{ Form::textarea('body') }}<br>
         {{ Form::submit('Сохранить') }}
     {{ Form::close() }}
 @endsection
