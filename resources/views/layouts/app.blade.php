@@ -8,6 +8,7 @@
         <meta name="csrf-param" content="_token" />
         <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
         <script src="{{ asset('js/bootstrap.js') }}"></script>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
     <nav class="navbar navbar-expand-sm bg-light">
