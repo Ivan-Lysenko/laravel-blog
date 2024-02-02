@@ -12,5 +12,5 @@
         <small><a href="{{ route('articles.destroy', $article) }}" data-confirm="Вы уверены?" data-method="delete" rel="nofollow">Удалить</a></small>
         <p>{{ $article->body }}</p>
     @endforeach
-    <div>{{ $articles->links() }}</div>
+{{--    <div>{{ $articles->links() }}</div>--}}
 @endsection

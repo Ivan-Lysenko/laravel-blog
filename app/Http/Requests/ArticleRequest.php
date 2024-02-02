@@ -25,7 +25,7 @@ class ArticleRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('articles', 'name')->ignore($this->id)
+                Rule::unique('articles', 'name')->ignore($this->article)
             ],
             'body' => 'required|min:1000',
         ];
